@@ -1078,7 +1078,8 @@ def frontend_install(c):
         c: Context variable
     """
     print('Installing frontend dependencies')
-    yarn(c, 'yarn install')
+    #yarn(c, 'yarn install')
+    yarn(c, 'npm install --force')
 
 
 @task
