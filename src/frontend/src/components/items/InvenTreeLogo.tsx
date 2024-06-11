@@ -4,6 +4,7 @@ import { forwardRef } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import InvenTreeIcon from './inventree.svg';
+import SmartclearIcon from './smtclr.png';
 
 export const InvenTreeLogoHomeButton = forwardRef<HTMLDivElement>(
   (props, ref) => {
@@ -20,5 +21,6 @@ export const InvenTreeLogoHomeButton = forwardRef<HTMLDivElement>(
 );
 
 export const InvenTreeLogo = () => {
-  return <img src={InvenTreeIcon} alt={t`InvenTree Logo`} height={28} />;
+  //return <img src={InvenTreeIcon} alt={t`InvenTree Logo`} height={28} />;
+  return <img src={SmartclearIcon} alt={t`InvenTree Logo`} height={28} />;
 };
