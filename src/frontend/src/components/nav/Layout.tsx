@@ -60,7 +60,7 @@ export default function LayoutComponent() {
           {/* </ErrorBoundary> */}
         </Container>
         <Space h="xl" />
-        <Footer />
+        {/*<Footer />*/}
         <Spotlight
           actions={actions}
           store={firstStore}
