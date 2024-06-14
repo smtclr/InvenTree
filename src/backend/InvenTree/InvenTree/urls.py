@@ -496,7 +496,7 @@ if settings.DEBUG:
 urlpatterns.append(
     path(
         'favicon.ico',
-        RedirectView.as_view(url=f'{settings.STATIC_URL}img/favicon/favicon.png'),
+        RedirectView.as_view(url=f'{settings.STATIC_URL}img/favicon/favicon.ico'),
     )
 )
 
