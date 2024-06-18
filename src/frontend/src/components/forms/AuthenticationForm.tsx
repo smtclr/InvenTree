@@ -52,7 +52,8 @@ export function AuthenticationForm() {
             message: t`Logged in successfully`
           });
 
-          navigate(location?.state?.redirectFrom ?? '/home');
+          //navigate(location?.state?.redirectFrom ?? '/home');
+          navigate(location?.state?.redirectFrom ?? '/part/category/index');
         } else {
           showLoginNotification({
             title: t`Login failed`,
@@ -193,7 +194,8 @@ export function RegistrationForm() {
             title: t`Registration successful`,
             message: t`Please confirm your email address to complete the registration`
           });
-          navigate('/home');
+          //navigate('/home');
+          navigate('/part/category/index');
         }
       })
       .catch((err) => {

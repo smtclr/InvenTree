@@ -4,12 +4,13 @@ import { menuItemsCollection } from '../components/items/MenuLinks';
 import { IS_DEV_OR_DEMO } from '../main';
 
 export const menuItems: menuItemsCollection = {
+  /*
   home: {
     id: 'home',
     text: <Trans>Home</Trans>,
     link: '/',
     highlight: true
-  },
+  },*/
   profile: {
     id: 'profile',
     text: <Trans>Account settings</Trans>,
@@ -23,11 +24,12 @@ export const menuItems: menuItemsCollection = {
     doctext: <Trans>View for interactive scanning and multiple actions.</Trans>,
     highlight: true
   },
+  /*
   dashboard: {
     id: 'dashboard',
     text: <Trans>Dashboard</Trans>,
     link: '/dashboard'
-  },
+  },*/
   parts: {
     id: 'parts',
     text: <Trans>Parts</Trans>,

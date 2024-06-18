@@ -34,7 +34,6 @@ ENV INVENTREE_BACKUP_DIR="${INVENTREE_DATA_DIR}/backup"
 ENV INVENTREE_PLUGIN_DIR="${INVENTREE_DATA_DIR}/plugins"
 
 ENV INVENTREE_BACKEND_DIR="${INVENTREE_HOME}/src/backend"
-ENV INVENTREE_FRONTEND_DIR="${INVENTREE_HOME}/src/frontend"
 
 # InvenTree configuration files
 ENV INVENTREE_CONFIG_FILE="${INVENTREE_DATA_DIR}/config.yaml"
@@ -109,7 +108,7 @@ RUN apk add --no-cache --update nodejs npm yarn
 RUN yarn config set network-timeout 600000 -g
 COPY src ${INVENTREE_HOME}/src
 COPY tasks.py ${INVENTREE_HOME}/tasks.py
-#RUN cd ${INVENTREE_HOME} && inv frontend-compile
+RUN cd ${INVENTREE_HOME} && inv frontend-compile
 
 # InvenTree production image:
 # - Copies required files from local directory
@@ -126,17 +125,11 @@ ENV INVENTREE_COMMIT_DATE="${commit_date}"
 ENV PATH=/root/.local/bin:$PATH
 COPY --from=prebuild /root/.local /root/.local
 
-RUN apk add --no-cache --update nodejs npm yarn
-RUN yarn config set network-timeout 600000 -g
 
 # Copy source code
-COPY src/frontend ${INVENTREE_FRONTEND_DIR}
-RUN rm -rf ${INVENTREE_FRONTEND_DIR}/node_modules/*
 COPY src/backend/InvenTree ${INVENTREE_BACKEND_DIR}/InvenTree
 COPY src/backend/requirements.txt ${INVENTREE_BACKEND_DIR}/requirements.txt
-RUN cd ${INVENTREE_HOME} && invoke frontend-compile
-#COPY --from=frontend ${INVENTREE_BACKEND_DIR}/InvenTree/web/static/web ${INVENTREE_BACKEND_DIR}/InvenTree/web/static/web
-RUN rm -rf ${INVENTREE_HOME}/data/static/web/*
+COPY --from=frontend ${INVENTREE_BACKEND_DIR}/InvenTree/web/static/web ${INVENTREE_BACKEND_DIR}/InvenTree/web/static/web
 
 # Launch the production server
 CMD gunicorn -c ./gunicorn.conf.py InvenTree.wsgi -b 0.0.0.0:8000 --chdir ${INVENTREE_BACKEND_DIR}/InvenTree

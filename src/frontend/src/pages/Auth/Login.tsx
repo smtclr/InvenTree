@@ -57,7 +57,8 @@ export default function Login() {
         searchParams.get('login') ?? '',
         searchParams.get('password') ?? ''
       ).then(() => {
-        navigate(location?.state?.redirectFrom ?? '/home');
+        //navigate(location?.state?.redirectFrom ?? '/home');
+        navigate(location?.state?.redirectFrom ?? '/part/category/index');
       });
     }
   }, []);

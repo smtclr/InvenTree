@@ -142,7 +142,8 @@ export const checkLoginState = async (
   setApiDefaults();
 
   if (redirect == '/') {
-    redirect = '/home';
+    //redirect = '/home';
+    redirect = '/part/category/index';
   }
 
   const { isLoggedIn, fetchUserState } = useUserState.getState();
@@ -156,7 +157,8 @@ export const checkLoginState = async (
 
     fetchGlobalStates();
 
-    navigate(redirect ?? '/home');
+    //navigate(redirect ?? '/home');
+    navigate(redirect ?? '/part/category/index');
   };
 
   // Callback function when login fails
