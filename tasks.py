@@ -504,7 +504,7 @@ def showmigrations(c, app=''):
 )
 def update(
     c,
-    skip_backup: bool = False,
+    skip_backup: bool = True,
     frontend: bool = False,
     no_frontend: bool = False,
     skip_static: bool = False,
